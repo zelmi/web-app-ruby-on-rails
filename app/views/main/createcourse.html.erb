@@ -1,0 +1,12 @@
+<% if @current_user && @current_user.user_type == "instructor" %>
+    <h1>Create a course!</h1>
+
+    <%= form_with model: @course do |form| %>
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" %>
+
+        <%= form.submit %>
+    <% end %>
+<% else %>
+    <h1>This place is not meant for you!</h1>
+<% end %>

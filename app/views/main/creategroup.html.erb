@@ -1,0 +1,21 @@
+<h1>Create Group</h1>
+
+<% @i = 0 %>
+<%= form_with(url: "/handle_new_group_2") do |form| %>
+    <%= form.label "Group name" %>
+    <%= form.text_field :group_name %>
+    <br/>
+
+    <% @students.filter {|s| !StudentGroup.find_by(studentId: s.id, groupId: Group.where(courseId: @course.id)) }.each do |student| %>
+        <% @i += 1 %>
+        <%= form.hidden_field "student#{@i}_id", value: student.id %>
+        <%= form.check_box "student#{@i}_selected" %>
+        <%= form.label student.name %>
+        <br/>
+    <% end %>
+
+    <%= form.hidden_field :courseId, value: @course.id %>
+    <%= form.hidden_field :num_students, value: @students.length %>
+
+    <%= form.submit %>
+<% end %>

@@ -1,0 +1,36 @@
+<% if @current_user %>
+    <h1>Welcome, <%= @current_user.name %></h1>
+    <% if @current_user.user_type == "student" %>
+        <p>You are a student!</p>
+        <h3>Your Surveys</h3>
+        <ul>
+            <% @surveys.each do |survey| %>
+                <% puts survey.id %>
+                <li><a href="/survey/<%= survey.id %>"><%= Survey.find(GroupSurvey.find(survey.group_surveyId).surveyId).name %></a></li>
+            <% end %>
+        </ul>
+    <% elsif @current_user.user_type == "instructor" %>
+        <label>You are an instructor!</label>
+        <ul>
+            <li><a href="/createcourse">Create a course!</a></li>
+        </ul>
+        <h3>Your courses</h3>
+        <ul>
+            <% @courses.each do |course| %>
+                <li><a href="/course/<%= course.id %>"><%= course.name %></a></li>
+            <% end %>
+        </ul>
+    <% end %>
+<% else %>
+    <h1>Not signed in!!</h1>
+<% end %>
+
+<% if @debug %>
+    <%= form_with(model: @user, :url => "/handle_reset_data") do |form| %>
+        <%= form.submit "Reset Data" %>
+    <% end %>
+
+    <%= form_with(model: @user, :url => "/handle_generate_data") do |form| %>
+        <%= form.submit "Generate Data" %>
+    <% end %>
+<% end %>

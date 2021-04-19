@@ -1,0 +1,2 @@
+class StudentGroupSurvey < ApplicationRecord
+end

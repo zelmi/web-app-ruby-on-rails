@@ -1,0 +1,11 @@
+<h1>Login!</h1>
+
+<%= form_with model: @user do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "form-control" %>
+
+    <%= form.submit %>
+<% end %>

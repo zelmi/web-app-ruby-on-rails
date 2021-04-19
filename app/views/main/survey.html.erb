@@ -1,0 +1,41 @@
+<% if @current_user && @current_user.user_type == "student" && @current_user.id == @student_group_survey.student_id.to_i %>
+    <h1><%= @survey.name %></h1>
+    <%= form_with(model: @user, :url => "/handle_survey_submit") do |form| %>
+        <% @other_students.each do |other_student| %>
+            <% if other_student.id == @current_user.id %>
+                <%= form.label "Provide feedback for yourself" %>
+            <% else %>
+                <%= form.label "Provide feedback for #{other_student.name}" %>
+            <% end %>
+            <%= form.text_area "text#{@i += 1}", class: "form-control", value: "f#{@i}" %>
+            <%= form.text_field "recep#{@i}", type: "hidden", value: other_student.id %>
+        <% end %>
+        <br/>
+        <%= form.text_field "author", type: "hidden", value: @current_user.id %>
+        <%= form.text_field :num_responses, type: "hidden", value: @other_students.length %>
+        <%= form.text_field "group_surveyId", type: "hidden", value: @group_survey.id %>
+        <%= form.text_field "student_group_surveyId", type: "hidden", value: @student_group_survey.id %>
+        <%= form.submit %>
+    <% end %>
+<% elsif @current_user && @current_user.user_type == "instructor" && @course.instructorId.to_i == @current_user.id %>
+    <h1><%= @survey.name %></h1>
+    <ul>
+        <% @groups.each do |group| %>
+            <li><%= group.name %></li>
+            <ul>
+                <% StudentGroup.where(groupId: group.id).each do |sg| %>
+                    <% @current_student = User.find(sg.studentId) %>
+                    <li><%= @current_student.name %></li>
+                    <ul>
+                        <% TextResponse.where(authorId: @current_student.id, group_surveyId: GroupSurvey.find_by(groupId: group.id, surveyId: @survey.id)).each do |tr| %>
+                            <li><%= User.find(tr.recepId).name %></li>
+                            <ul><li><%= tr.value %></li></ul>
+                        <% end %>
+                    </ul>
+                <% end %>
+            </ul>
+        <% end %>
+    </ul>
+<% else %>
+    <h1>This place is not meant for you!</h1>
+<% end %>

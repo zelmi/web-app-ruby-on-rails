@@ -1,0 +1,45 @@
+<% if @current_user && @current_user.id == @course.instructorId.to_i %>
+    <h1><%= @course.name %></h1>
+
+    <hr/>
+
+    <ul>
+        <li><a href="/addstudents/<%= @course.id %>">Add students to this course</a></li>
+        <li><a href="/creategroup/<%= @course.id %>">Create a group</a></li>
+        <li><a href="/createsurvey/<%= @course.id %>">Create a Survey</a></li>
+    </ul>
+
+    <hr/>
+
+    <h3>Students</h3>
+    <ul>
+        <% @students.each do |student| %>
+            <li><%= student.name %></li>
+        <% end %>
+    </ul>
+
+    <hr />
+
+    <h3>Groups</h3>
+    <ul>
+        <% @groups.each do |group| %>
+            <li><%= group.name %></li>
+            <ul>
+                <% @students.filter {|student| StudentGroup.find_by(studentId: student.id) != nil && (StudentGroup.find_by(groupId: Group.where(courseId: @course.id), studentId: student.id).groupId.to_i == group.id.to_i) }.each do |student| %>
+                    <li><%= student.name %></li>
+                <% end %>
+            </ul>
+        <% end %>
+    </ul>
+
+    <hr/>
+
+    <h3>Surveys</h3>
+    <ul>
+        <% @surveys.each do |survey| %>
+            <li><a href="/survey/<%= survey.id %>"><%= survey.name %></a></li>
+        <% end %>
+    </ul>
+<% else %>
+    <h1>This place is not meant for you!</h1>
+<% end %>

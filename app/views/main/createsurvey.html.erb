@@ -1,0 +1,9 @@
+<h1>Create Survey!</h1>
+
+<%= form_with(url: "/handle_create_survey") do |form| %>
+    <%= form.label "Survey name" %>
+    <%= form.text_field :name, class: "form-control" %>
+
+    <%= form.text_field :courseId, type: "hidden", value: @courseId %>
+    <%= form.submit %>
+<% end %>

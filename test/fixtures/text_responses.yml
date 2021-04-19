@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  value: MyString
+  authorId: MyString
+  recepId: MyString
+  group_surveyId: MyString
+  question: MyString
+
+two:
+  value: MyString
+  authorId: MyString
+  recepId: MyString
+  group_surveyId: MyString
+  question: MyString
