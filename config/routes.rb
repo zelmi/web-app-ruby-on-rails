@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users, only: [:new, :create]
   get "/" => "main#index"
 
   get "/course/:id" => "main#course"
@@ -8,9 +9,6 @@ Rails.application.routes.draw do
 
   get "/login" => "register#login"
   post "/login" => "register#handle_login"
-
-  get "/signup" => "register#signup"
-  post "/signup" => "register#create"
 
   get "/createcourse" => "main#createcourse"
   post "/createcourse" => "main#handle_create_course"

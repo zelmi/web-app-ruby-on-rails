@@ -1,4 +1,17 @@
-<h1>New User</h1>
+<h1>Signup</h1>
 
-<%= render 'form', user: @user %>
-<%= link_to 'Back', users_path %>
+<%= form_for @user do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+    <br/>
+    
+    <%= form.label :user_type %><br />
+    <%= form.radio_button :user_type, 'student'%> student<br />
+    <%= form.radio_button :user_type, 'instructor'%> instructor<br />
+    <br/>
+    
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "form-control" %>
+
+    <%= form.submit %>
+<% end %>
