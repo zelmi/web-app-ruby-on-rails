@@ -12,9 +12,9 @@ class UsersController < ApplicationController
         if @user.save
         	session[:user_id] = @user.id    
         	flash[:success] = "Success!"  
+        	redirect_to "/", notice: "Successfully created the account"
         else
         	flash[:warning] = "Something went wrong!"
         end
-               redirect_to "/", notice: "Successfully created the account"
   end
 end
