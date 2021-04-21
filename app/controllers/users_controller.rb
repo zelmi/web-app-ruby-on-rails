@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         	redirect_to "/", notice: "Successfully created the account"
         else
         	flash[:warning] = "Something went wrong!"
-          render "new"
+          redirect_to "/users/new", notice: "Duplicate user entered!"
         end
   end
 end
