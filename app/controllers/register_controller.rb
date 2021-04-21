@@ -8,7 +8,7 @@ class RegisterController < ApplicationController
         redirect_to "/", notice: "Successfully logged out"
     end
     def create
-          if User.find_by(name: params[:name])
+        if User.find_by(name: params[:name])
             return
         end
 
@@ -16,7 +16,7 @@ class RegisterController < ApplicationController
         if user.save
         	session[:user_id] = user.id    
         	flash[:success] = "Success!"  
-       	 redirect_to "/", notice: "Successfully created the account"
+       	    redirect_to "/", notice: "Successfully created the account"
         else
         	flash[:warning] = "Something went wrong!"
         end
