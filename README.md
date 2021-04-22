@@ -4,7 +4,7 @@ Peer evaluations are an important component of the grading rubric for various gr
 ## How to Run
 To run this project, download this projec to your machine. After downloading, navigate to the root directory of this project within your Ubuntu terminal. 
 
-Run the command:
+Within the Ubuntu terminal, run the command:
 ```
 $ bundle install
 ```
