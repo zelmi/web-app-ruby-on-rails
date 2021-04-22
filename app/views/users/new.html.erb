@@ -2,6 +2,7 @@
 
 <%= form_for @user do |form| %>
     <%= form.label :name %>
+    <p>(is case-sensitive and must be unique)</p>
     <%= form.text_field :name, class: "form-control" %>
     <br/>
     
@@ -11,6 +12,7 @@
     <br/>
     
     <%= form.label :password %>
+    <p>(must be at least 6 characters)</p>
     <%= form.password_field :password, class: "form-control" %>
 
     <%= form.submit %>

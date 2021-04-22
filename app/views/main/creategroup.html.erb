@@ -2,7 +2,8 @@
 
 <% @i = 0 %>
 <%= form_with(url: "/handle_new_group_2") do |form| %>
-    <%= form.label "Group name" %>
+    <%= form.label "Group name (is case-sensitive and must be unique)" %>
+    <br/>
     <%= form.text_field :group_name %>
     <br/>
 
