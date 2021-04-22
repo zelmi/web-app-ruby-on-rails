@@ -225,7 +225,7 @@ class MainController < ApplicationController
         end
 
         # Make Charlie
-        User.new({ name: 'Charlie', password: "1", user_type: "instructor" }).save
+        User.new({ name: 'Charlie', password: "123456", user_type: "instructor" }).save
         charlie = User.find_by(name: "Charlie")
 
         # Make new Web Apps course owned by Charlie
