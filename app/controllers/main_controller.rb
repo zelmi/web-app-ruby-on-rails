@@ -221,7 +221,7 @@ class MainController < ApplicationController
     def handle_generate_data
         # Make the students
         [1,2,3,4,5,6,7,8,9,10,11,12].each do |i|
-            User.new({ name: "student#{i}", password: "1", user_type: "student" }).save
+            User.new({ name: "student#{i}", password: "123456", user_type: "student" }).save
         end
 
         # Make Charlie
