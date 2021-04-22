@@ -3,6 +3,7 @@
 
     <%= form_with model: @course do |form| %>
         <%= form.label :name %>
+        <p>(is case-sensitive and must be unique)</p>
         <%= form.text_field :name, class: "form-control" %>
 
         <%= form.submit %>
