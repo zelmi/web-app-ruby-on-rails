@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         	flash[:success] = "Successfully created the account"  
         	redirect_to "/"
         else
-        	flash[:warning] = "Duplicate user entered!"
+        	flash[:warning] = "Invalid credentials. Please try again."
           redirect_to "/users/new"
         end
   end
