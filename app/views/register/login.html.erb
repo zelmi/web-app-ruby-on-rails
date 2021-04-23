@@ -1,12 +1,12 @@
-<h1>Login!</h1>
+<h1>Sign In</h1>
 
 <%= form_with model: @user do |form| %>
     <%= form.label :name %>
-    <p>(case-sensitive)</p>
+    <p class = "label-text">(case-sensitive)</p>
     <%= form.text_field :name, class: "form-control" %>
 
     <%= form.label :password %>
     <%= form.password_field :password, class: "form-control" %>
     </br>
-    <%= form.submit "Log in", class: "btn btn-secondary" %>
+    <%= form.submit "Sign In", class: "btn btn-secondary" %>
 <% end %>

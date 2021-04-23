@@ -7,58 +7,70 @@
     <link rel="stylesheet" href="../assets/stylesheets/custom.scss">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <style>
-      .wrapper {
-        padding: 20px 100px;
+      /* home page  */
+        .wrapper {
+          padding: 20px 100px;
+        }
+
+        .navbar {
+          background-color: #013B84;
+        }
+      
+        h1 {
+          width : 100%;
+          text-align: center;
+          font-size: 36px;
+        }
+      
+        #home-grid {
+          display : grid;
+          grid-template-columns: repeat(2, 50%);
+          margin-top : 64px;
+        }
+      
+        .grid-section {
+        pa
+        }
+      
+        p {
+          font-size: 24px;
+        }
+      
+        a.ctsm-btn , .btn , .sbmt-btn {
+          background-color:#013B84;
+          color: #fff;
+          margin-bottom :  34px;
+          text-decoration: none;
+        }
+      
+        a.ctsm-btn:hover , .btn:hover , .sbmt-btn:hover {
+          background-color:gray;
+          color: #013B84;
+      
+        }
+      
+        a.cstm-btn:visited
+      {
+       color:inherit;
       }
 
-      h1 {
-        width : 100%;
-        text-align: center;
-        font-size: 36px;
+
+      /* sign in/out pages  */
+      p.label-text {
+        font-size : 1rem;
       }
 
-      #home-grid {
-        display : grid;
-        grid-template-columns: repeat(2, 50%);
-        margin-top : 64px;
+      .sbmt-btn {
+        margin-top: 32px;
       }
-
-      .grid-section {
-      pa
-      }
-
-      p {
-        font-size: 24px;
-      }
-
-      a.ctsm-btn , .btn {
-        background-color:#013B84; 
-        color: #fff;
-        margin-bottom :  34px;
-        text-decoration: none;
-      }
-
-      a.ctsm-btn:hover , .btn:hover {
-        background-color:gray; 
-        color: #013B84;
-        
-      }
-
-      a.cstm-btn:visited
-{
- color:inherit;
-}
-
     </style>
   </head>
   <body>
     <%= render partial: "shared/navbar" %>
     <div class="wrapper">
-    <%= yield %>
+      <%= yield %>
     </div>
   </body>
 </html>
