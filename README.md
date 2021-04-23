@@ -1,4 +1,4 @@
-# Peer Evaluation Tool
+# MeCAT: Peer Evaluation Tool
 Peer evaluations are an important component of the grading rubric for various group projects and tasks. The feedback from these peer evaluation forms lets instructors know how the group felt about their project, and includes responses from students on their team-members. This is a web application written with Ruby on Rails that does just that.
 
 ## How to Run
