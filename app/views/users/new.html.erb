@@ -6,7 +6,7 @@
 <h1>Sign up</h1>
 <%= form_for @user do |form| %>
     <%= form.label :name %>
-    <p>(is case-sensitive and must be unique)</p>
+    <p class = "label-text">(is case-sensitive and must be unique)</p>
     <%= form.text_field :name, class: "form-control" %>
     <br/>
     <%= form.label :email %>
@@ -19,8 +19,8 @@
     <br/>
     
     <%= form.label :password %>
-    <p>(must be at least 6 characters)</p>
+    <p class = "label-text">(must be at least 6 characters)</p>
     <%= form.password_field :password, class: "form-control" %>
 
-    <%= form.submit %>
+    <%= form.submit class: "sbmt-btn btn"%>
 <% end %>
