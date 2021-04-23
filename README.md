@@ -49,7 +49,7 @@ http://localhost:3000
 * Authenticated Users
 * Uniqueness
 
-### Testing Functionality
+## Testing Functionality
 To test the functionality of this web application, click the Generate Data button on the main screen. This will generate 12 students, named student1-12, and 1 instructor, named Charlie. All users have passwords '123456'. Charlie will have one class called 'Web-Apps', which includes 3 groups of students. 
 
 To reset all data, click the Reset Data button.
