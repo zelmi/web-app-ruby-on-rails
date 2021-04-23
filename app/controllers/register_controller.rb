@@ -5,6 +5,7 @@ class RegisterController < ApplicationController
 
     def logout
         session[:user_id] = nil
+        flash[:logout] = "Successfully logged out" 
         redirect_to "/", notice: "Successfully logged out"
     end
     def create

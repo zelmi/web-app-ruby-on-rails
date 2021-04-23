@@ -8,14 +8,14 @@ class UsersController < ApplicationController
           return
         end
 
-        @user = User.create(params.require(:user).permit(:name, :user_type, :password))
+        @user = User.create(params.require(:user).permit(:name, :email, :user_type, :password))
         if @user.save
         	session[:user_id] = @user.id    
-        	flash[:success] = "Success!"  
-        	redirect_to "/", notice: "Successfully created the account"
+        	flash[:success] = "Successfully created the account"  
+        	redirect_to "/"
         else
-        	flash[:warning] = "Something went wrong!"
-          redirect_to "/users/new", notice: "Duplicate user entered!"
+        	flash[:warning] = "Duplicate user entered!"
+          redirect_to "/users/new"
         end
   end
 end

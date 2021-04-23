@@ -1,11 +1,23 @@
+
+<% if !!flash[:error] or !!flash[:error1] or !!flash[:error0]%>
+<div class="alert alert-danger" role="alert">
+  <%= flash[:error] %>
+  <%= flash[:error1] %>
+  <%= flash[:error0] %>
+</div>
+<% end %>
+
 <h1>Add Students!</h1>
 
 <%= form_with(url: "/handle_add_students") do |form| %>
     <%= form.label "Student names" %>
+    <p> Upload a json file formatted like the example json provided</p>
+    <%= link_to 'Download Example Json', download_json_path %>
     <br/>
-    <%= form.text_area :text, size: "100x10" %>
     <br/>
-
+    <%= form.file_field :file,  :accept => 'application/json' %>
+    <br/>
+    <br/>
     <%= form.hidden_field :courseId, value: @course.id %>
     <%= form.submit %>
 <% end %>

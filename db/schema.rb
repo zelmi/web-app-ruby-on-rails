@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_21_190228) do
+ActiveRecord::Schema.define(version: 2021_04_22_203845) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2021_04_21_190228) do
     t.string "courseId"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deadline"
   end
 
   create_table "text_responses", force: :cascade do |t|
@@ -79,6 +80,7 @@ ActiveRecord::Schema.define(version: 2021_04_21_190228) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password"
+    t.string "email"
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 

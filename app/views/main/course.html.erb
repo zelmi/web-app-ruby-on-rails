@@ -1,3 +1,11 @@
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+
 <% if @current_user && @current_user.id == @course.instructorId.to_i %>
     <h1><%= @course.name %></h1>
 
@@ -12,11 +20,18 @@
     <hr/>
 
     <h3>Students</h3>
-    <ul>
+          <table style="width:100%">
+          <tr>
+   	 <th>Name</th>
+    	<th>Email</th>
+ 	 </tr>
         <% @students.each do |student| %>
-            <li><%= student.name %></li>
+  	<tr>
+   	 <td><%= student.name %></td>
+   	 <td><%= student.email %></td>
+ 	 </tr>
         <% end %>
-    </ul>
+        </table>
 
     <hr />
 

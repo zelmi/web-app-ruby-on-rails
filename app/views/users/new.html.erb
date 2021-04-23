@@ -1,9 +1,16 @@
+<% flash.each do |key, value| %>
+<div class="alert alert-danger" role="alert">
+  <%= flash[:warning] %>
+</div>
+<% end %>
 <h1>Sign up</h1>
-
 <%= form_for @user do |form| %>
     <%= form.label :name %>
     <p>(is case-sensitive and must be unique)</p>
     <%= form.text_field :name, class: "form-control" %>
+    <br/>
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-control" %>
     <br/>
     
     <%= form.label :user_type %><br />

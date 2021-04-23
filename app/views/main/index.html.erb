@@ -1,3 +1,9 @@
+<% if !!flash[:success] or !!flash[:logout] %>
+<div class="alert alert-success" role="alert">
+  <%= flash[:success] %>
+  <%= flash[:logout] %>
+</div>
+<% end %>
 <% if @current_user %>
     <h1>Welcome, <%= @current_user.name %></h1>
     <% if @current_user.user_type == "student" %>
@@ -26,11 +32,14 @@
 <% end %>
 
 <% if @debug %>
+    <div class = "jumbotron">
     <%= form_with(model: @user, :url => "/handle_reset_data") do |form| %>
-        <%= form.submit "Reset Data" %>
+        <%= form.submit "Reset Data", class: "btn btn-secondary btn-lg" %>
     <% end %>
 
     <%= form_with(model: @user, :url => "/handle_generate_data") do |form| %>
-        <%= form.submit "Generate Data" %>
+    </br>
+        <%= form.submit "Generate Data", class: "btn btn-secondary btn-lg" %>
     <% end %>
+    </div>
 <% end %>

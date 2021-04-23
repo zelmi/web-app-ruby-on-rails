@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   
   get "/creategroup/:courseId" => "main#creategroup"
   get "/addstudents/:courseId" => "main#addstudents"
+  get "download_json" => "main#download_json"
   get "/createsurvey/:courseId" => "main#createsurvey"
 
   post "/handle_new_course_student" => "main#handle_new_course_student"

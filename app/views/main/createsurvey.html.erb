@@ -4,7 +4,12 @@
     <%= form.label "Survey name (is case-sensitive and must be unique)" %>
     <br/>
     <%= form.text_field :name, class: "form-control" %>
-
+    <br/>
+    <%= form.label "Deadline" %>
+    </br>
+    <%= form.datetime_select :deadline, class: "form-control" %>
     <%= form.text_field :courseId, type: "hidden", value: @courseId %>
-    <%= form.submit %>
+    </br>
+    </br>
+    <%= form.submit class: "btn btn-secondary" %>
 <% end %>

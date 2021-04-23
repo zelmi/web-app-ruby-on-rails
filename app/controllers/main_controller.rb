@@ -90,18 +90,41 @@ class MainController < ApplicationController
         courseId = params[:courseId]
         @course = Course.find(courseId)
     end
-
+	def download_json
+  	send_file(
+    "#{Rails.root}/public/example.json",
+    filename: "example.json",
+    type: "application/json"
+  	)
+	end
     def handle_add_students
-        text = params[:text]
-        student_names = text.split("\n")
-        student_names.each {|name| name.strip! }
-
-        student_names.each do |name|
-            student = User.find_by(name: name)
+    	#check if file is valid json file in valid format
+        if params[:file] == nil
+              flash[:error0] = "Error: Please upload a file." 
+        else
+              file = params[:file].read	
+            student = nil
+	    ActiveSupport::JSON.decode(file)["students"].each do |user|
+            student = User.find_by(name: user["name"], email: user["email"])
+            
+            if user["name"] == nil or user["email"] == nil
+            	flash[:error1] = "Error: improperly formatted json file."
+            	break
+            end
+            
+            if student == nil and user["name"] != nil
+            	flash[:error] = "Error, Student " + user["name"] + " does not exist in our data"
+            	break
+            end
+            
             StudentCourse.new(studentId: student.id, courseId: params[:courseId]).save
         end
-
-        redirect_to "/course/#{params[:courseId]}", notice: "yay!"
+        end
+	if student != nil
+        	redirect_to "/course/#{params[:courseId]}", notice: "yay!"
+       else
+      		 redirect_to "/addstudents/#{params[:courseId]}"
+        end
     end
 
     def handle_new_course_student
