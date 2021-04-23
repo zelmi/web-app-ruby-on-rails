@@ -244,11 +244,11 @@ class MainController < ApplicationController
     def handle_generate_data
         # Make the students
         [1,2,3,4,5,6,7,8,9,10,11,12].each do |i|
-            User.new({ name: "student#{i}", password: "123456", user_type: "student" }).save
+            User.new({ name: "student#{i}", password: "123456", user_type: "student", email: "abc#{i}@email.com" }).save
         end
 
         # Make Charlie
-        User.new({ name: 'Charlie', password: "123456", user_type: "instructor" }).save
+        User.new({ name: 'Charlie', password: "123456", user_type: "instructor", email: "charlie@email.com" }).save
         charlie = User.find_by(name: "Charlie")
 
         # Make new Web Apps course owned by Charlie
