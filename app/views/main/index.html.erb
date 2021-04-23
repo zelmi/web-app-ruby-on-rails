@@ -5,32 +5,44 @@
 </div>
 <% end %>
 <% if @current_user %>
-    <h1>Welcome, <%= @current_user.name %></h1>
-    <% if @current_user.user_type == "student" %>
-        <p>You are a student!</p>
-        <h3>Your Surveys</h3>
-        <ul>
-            <% @surveys.each do |survey| %>
-                <% puts survey.id %>
-                <li><a href="/survey/<%= survey.id %>"><%= Survey.find(GroupSurvey.find(survey.group_surveyId).surveyId).name %></a></li>
-            <% end %>
-        </ul>
-    <% elsif @current_user.user_type == "instructor" %>
-        <label>You are an instructor!</label>
-        <ul>
-            <li><a href="/createcourse">Create a course!</a></li>
-        </ul>
-        <h3>Your courses</h3>
-        <ul>
-            <% @courses.each do |course| %>
-                <li><a href="/course/<%= course.id %>"><%= course.name %></a></li>
-            <% end %>
-        </ul>
-    <% end %>
+  <h1>Welcome, <%= @current_user.name %></h1>
+  <% if @current_user.user_type == "student" %>
+    <p>You are a student!</p>
+    <h3>Your Surveys</h3>
+    <ul>
+      <% @surveys.each do |survey| %>
+        <% puts survey.id %>
+        <li><a href="/survey/<%= survey.id %>"><%= Survey.find(GroupSurvey.find(survey.group_surveyId).surveyId).name %></a></li>
+      <% end %>
+    </ul>
+  <% elsif @current_user.user_type == "instructor" %>
+    <label>You are an instructor!</label>
+    <ul>
+      <li><a href="/createcourse">Create a course!</a></li>
+    </ul>
+    <h3>Your courses</h3>
+    <ul>
+      <% @courses.each do |course| %>
+        <li><a href="/course/<%= course.id %>"><%= course.name %></a></li>
+      <% end %>
+    </ul>
+  <% end %>
 <% else %>
-    <h1>Not signed in!!</h1>
+  <h1>Welcome to Catme</h1>
+  <div id = "home-grid">
+    <div class = "grid-section">
+      <p>The latest tool for peer evaluation <br>
+         Sign up with a free account as a student or intructor to get started</p>
+      <br>
+      <button type="button" class="btn"><a class = "cstm-btn" href="/users/new">Sign Up!</a></button>
+      <br>
+      <button type="button" class="btn"><a class = "cstm-btn" href="/login">Sign In!</a></button>
+    </div>
+    <div class = "grid-section">
+      <%= image_tag("urban-853.png", alt: "office setting", height: "460px")%>
+    </div>
+  </div>
 <% end %>
-
 <% if @debug %>
     <div class = "jumbotron">
     <%= form_with(model: @user, :url => "/handle_reset_data") do |form| %>
