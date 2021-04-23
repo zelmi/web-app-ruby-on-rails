@@ -11,7 +11,12 @@ $ bundle install
 
 This will install all necessary Gems needed for this application.
 
-Next, still in the root directory folder, run the command:
+Before running rails server, you first need to migrate the database using the command:
+```
+$ rails db:migrate
+```
+
+Finally, still in the root directory folder, run the command:
 ```
 $ rails server
 ```
@@ -31,7 +36,7 @@ Puma starting in single mode...
 Use Ctrl-C to stop
 ```
 
-Now that Rails has been successfully launched on your local machine, you can navigate to your favorite web-browser and interact with the server. 
+Now that a Rails server instance has been successfully launched on your local machine, you can navigate to your favorite web-browser and interact with the server. 
 
 Navigate to the following url in your browser to view the application:
 
