@@ -43,6 +43,12 @@ Navigate to the following url in your browser to view the application:
 ```
 http://localhost:3000
 ```
+
+## Additional Extensions
+* Password Hashing
+* Authenticated Users
+* Uniqueness
+
 ## Contributions
 
 ### Team: //Todo: Make team name
